@@ -1,4 +1,117 @@
 import type { Metadata } from "next";
+import { company } from "@/lib/site";
+import { PageHero } from "@/components/page-hero";
 import { EnquiryForm } from "./enquiry-form";
-export const metadata: Metadata = { title: "Contact" };
-export default function Contact(){const email=process.env.NEXT_PUBLIC_COMPANY_EMAIL||"hello@gbsinteriors.in";const phone=process.env.NEXT_PUBLIC_COMPANY_PHONE||"+91 00000 00000";const address=process.env.NEXT_PUBLIC_COMPANY_ADDRESS||"India";const hours=process.env.NEXT_PUBLIC_COMPANY_HOURS||"Monday – Saturday, 10:00 am – 6:00 pm";return <main className="inner-page contact-page"><div className="inner-hero"><div className="section-kicker">LET’S TALK ABOUT YOUR SPACE</div><h1>Good things begin<br /><em>with a conversation.</em></h1><p>Tell us a little about what you have in mind. We’ll be in touch to take it from there.</p></div><div className="contact-layout"><EnquiryForm/><aside className="contact-aside"><span className="section-kicker">COME SAY HELLO</span><h2>GBS Interiors</h2><p>{address}<br />{hours}</p><a href={`mailto:${email}`}>{email}</a><a href={`tel:${phone.replace(/[^+\d]/g, "")}`}>{phone}</a><div className="contact-aside-note">We usually reply within two working days.</div></aside></div></main>}
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Book a consultation with GBS Interiors in Dindigul, Tamil Nadu. Call, WhatsApp or send an enquiry about a home or workplace project.",
+  alternates: { canonical: "/contact" },
+};
+
+const packageServices: Record<string, string> = {
+  "design-only": "Design only",
+  "design-build": "Design + build",
+  turnkey: "Turnkey interiors",
+};
+
+export default async function Contact({
+  searchParams,
+}: {
+  searchParams: Promise<{ package?: string }>;
+}) {
+  const { package: pack } = await searchParams;
+  const defaultService = pack ? packageServices[pack] || "" : "";
+
+  return (
+    <main>
+      <PageHero
+        kicker="Contact"
+        breadcrumbs={[{ label: "Contact" }]}
+        title={
+          <>
+            Good things begin
+            <br />
+            <em>with a conversation.</em>
+          </>
+        }
+        intro="Tell us about the space, the city and the decision you are trying to make. We will reply with a sensible next step — usually a short call or a studio visit."
+        actions={
+          <>
+            <a className="btn" href={company.phoneHref}>
+              Call {company.phone}
+            </a>
+            <a
+              className="btn btn-ghost"
+              href={company.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+            >
+              WhatsApp
+            </a>
+          </>
+        }
+      />
+
+      <section className="section">
+        <div className="container">
+          <div className="contact-layout">
+            <EnquiryForm
+              source="contact"
+              defaultService={defaultService}
+              heading="Send an enquiry"
+              intro="Fields marked required are enough to start. Share as much or as little as you like."
+            />
+
+            <aside className="contact-aside">
+              <div className="contact-card">
+                <span className="kicker">Direct</span>
+                <h2 style={{ marginTop: 12 }}>Talk to the studio</h2>
+                <a href={company.phoneHref}>{company.phone}</a>
+                <a
+                  href={company.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  WhatsApp · {company.phone}
+                </a>
+                <a href={`mailto:${company.email}`}>{company.email}</a>
+                <span className="contact-small">{company.hours}</span>
+                <span className="contact-small">{company.responseTime}</span>
+              </div>
+
+              <div className="contact-card">
+                <span className="kicker">Visit</span>
+                <h2 style={{ marginTop: 12 }}>{company.name}</h2>
+                <p>{company.address}</p>
+                <p className="contact-small">
+                  Studio visits by appointment so we can set aside time.
+                </p>
+                <a
+                  href={company.mapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ marginTop: 12 }}
+                >
+                  Open in Google Maps ↗
+                </a>
+              </div>
+
+              <div className="contact-card" style={{ background: "var(--graphite)", color: "var(--limewash)" }}>
+                <span className="kicker" style={{ color: "rgba(247,246,242,.6)" }}>
+                  What happens next
+                </span>
+                <ol style={{ marginTop: 14, paddingLeft: 18, display: "grid", gap: 8, fontSize: 15 }}>
+                  <li>We read the enquiry and check the fit.</li>
+                  <li>We reply to arrange a short call or site visit.</li>
+                  <li>If it feels right, we scope the work in writing.</li>
+                </ol>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

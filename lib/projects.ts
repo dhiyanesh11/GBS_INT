@@ -5,10 +5,13 @@ import {db} from "@/lib/db";
 
 export type Project = { id: string; title: string; slug: string; type: "Residential" | "Commercial"; location: string; description: string; images: string[]; updatedAt: string };
 
+const u = (id: string) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1600&q=85`;
+
 const seed: Project[] = [
-  { id: "quiet-house", title: "The quiet house", slug: "the-quiet-house", type: "Residential", location: "Bengaluru", description: "A calm, considered home shaped by natural textures, warm light, and the rhythms of everyday life.", images: ["https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85"], updatedAt: new Date(0).toISOString() },
-  { id: "softer-workspace", title: "A softer workspace", slug: "a-softer-workspace", type: "Commercial", location: "Mysuru", description: "A welcoming workspace with room to think and collaborate.", images: ["https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85"], updatedAt: new Date(0).toISOString() },
-  { id: "everyday-elevated", title: "Everyday, elevated", slug: "everyday-elevated", type: "Residential", location: "Bengaluru", description: "Thoughtful details make everyday living feel special.", images: ["https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85"], updatedAt: new Date(0).toISOString() },
+  { id: "quiet-house", title: "The quiet house", slug: "the-quiet-house", type: "Residential", location: "Dindigul", description: "A calm, considered home shaped by natural textures, warm light, and the rhythms of everyday life.", images: [u("photo-1600210492486-724fe5c67fb0"), u("photo-1615874959474-d609969a20ed"), u("photo-1618219908412-a29a1bb7b86e"), u("photo-1600489000022-c2086d79f9d4")], updatedAt: new Date(0).toISOString() },
+  { id: "softer-workspace", title: "A softer workspace", slug: "a-softer-workspace", type: "Commercial", location: "Madurai", description: "A welcoming workspace with room to think and collaborate.", images: [u("photo-1497366754035-f200968a6e72"), u("photo-1497366811353-6870744d04b2"), u("photo-1524758631624-e2822e304c36")], updatedAt: new Date(0).toISOString() },
+  { id: "everyday-elevated", title: "Everyday, elevated", slug: "everyday-elevated", type: "Residential", location: "Coimbatore", description: "Thoughtful details make everyday living feel special.", images: [u("photo-1600607687939-ce8a6c25118c"), u("photo-1616486338812-3dadae4b4ace"), u("photo-1600566752355-35792bedcfea")], updatedAt: new Date(0).toISOString() },
 ];
 
 const file = path.join(process.cwd(), "data", "projects.json");

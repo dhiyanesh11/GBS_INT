@@ -1,3 +1,84 @@
-import type {Metadata} from "next";
-export const metadata:Metadata={title:"Privacy Policy"};
-export default function Privacy(){const email=process.env.NEXT_PUBLIC_COMPANY_EMAIL||"hello@gbsinteriors.in";return <main className="inner-page article"><div className="section-kicker">YOUR INFORMATION</div><h1>Privacy policy</h1><p className="article-lead">This draft explains how GBS Interiors handles information shared through this website. It must be reviewed and approved by the business before publication.</p><h2>Information collected</h2><p>When you submit an enquiry, we collect your name, phone number, optional email, city or project location, property type, requested service, optional budget and message, and your consent to be contacted. The website also processes basic technical information needed to protect the form from abuse.</p><h2>How we use your information</h2><p>We use enquiry details to respond, understand your design requirements, and follow up about the requested services. We do not sell enquiry data.</p><h2>Who may process enquiry data</h2><p>Enquiry details are stored in a private Google spreadsheet controlled by GBS Interiors and accessible to the authorised team. Google processes data under its own terms and privacy practices. Spreadsheet access should be restricted to staff who need it to respond.</p><h2>Retention and security</h2><p>The business should set and follow a retention schedule. The current proposed period is up to 12 months after the last enquiry interaction, unless a longer period is needed to meet legal obligations or resolve a matter. The website uses access controls and encrypted connections, but no online service can promise absolute security.</p><h2>Your choices and requests</h2><p>You may contact GBS Interiors to ask about your personal information, request correction or deletion where applicable, or withdraw consent for further contact. Some records may need to be retained where required by law.</p><h2>Contact</h2><p>For privacy questions, contact <a href={`mailto:${email}`}>{email}</a>.</p><p className="detail-note">Business approval required: confirm the data controller identity and address, retention period, grievance contact, and applicable privacy rights before launch.</p></main>}
+import type { Metadata } from "next";
+import { company } from "@/lib/site";
+import { PageHero } from "@/components/page-hero";
+
+export const metadata: Metadata = {
+  title: "Privacy policy",
+  description:
+    "How GBS Interiors collects, uses and stores information submitted through this website.",
+  alternates: { canonical: "/privacy" },
+};
+
+export default function Privacy() {
+  return (
+    <main>
+      <PageHero
+        kicker="Privacy"
+        breadcrumbs={[{ label: "Privacy" }]}
+        title={
+          <>
+            Your
+            <br />
+            <em>information.</em>
+          </>
+        }
+        intro="This draft explains how we handle information shared through this website. It should be reviewed by the business before publication."
+      />
+
+      <section className="section">
+        <div className="container">
+          <div className="prose">
+            <h2>What we collect</h2>
+            <p>
+              When you submit an enquiry or use the estimate planner, we collect
+              your name, phone number, optional email, city or project location,
+              property type, requested service, optional budget, the details you
+              choose to share, and your consent to be contacted.
+            </p>
+            <p>
+              The site also processes basic technical information needed to
+              protect forms from abuse, such as a rate-limit key derived from
+              your connection. If anti-bot verification is enabled, a token is
+              processed by Cloudflare Turnstile.
+            </p>
+
+            <h2>How we use it</h2>
+            <p>
+              We use enquiry details to respond, understand your requirements and
+              follow up about the requested services. We do not sell enquiry
+              data.
+            </p>
+
+            <h2>Where it is stored</h2>
+            <p>
+              Enquiries are stored in the studio&apos;s private database or, in
+              local development, a private file on the server. Access is limited
+              to the people who need it to respond.
+            </p>
+
+            <h2>How long we keep it</h2>
+            <p>
+              We keep enquiry records for as long as needed to respond and
+              maintain a record of the project discussion, unless a longer period
+              is required by law or agreed with you.
+            </p>
+
+            <h2>Your choices</h2>
+            <p>
+              You can ask us to correct or delete your enquiry details, or to stop
+              contacting you, by emailing{" "}
+              <a href={`mailto:${company.email}`}>{company.email}</a>.
+            </p>
+
+            <h2>Cookies</h2>
+            <p>
+              This site does not set advertising cookies. Third-party services
+              such as Turnstile or an embedded scheduling link may set their own
+              cookies when you choose to use them.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
