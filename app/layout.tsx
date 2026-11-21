@@ -75,7 +75,6 @@ export default function RootLayout({
     "@type": "InteriorDesigner",
     name: company.name,
     url: siteUrl,
-    telephone: company.phone,
     email: company.email,
     image: photos.hero.src,
     description:

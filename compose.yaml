@@ -1,0 +1,18 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+        NEXT_PUBLIC_COMPANY_NAME: ${NEXT_PUBLIC_COMPANY_NAME:-GBS Interiors}
+        NEXT_PUBLIC_COMPANY_PHONE: ${NEXT_PUBLIC_COMPANY_PHONE:-98844}
+        NEXT_PUBLIC_COMPANY_EMAIL: ${NEXT_PUBLIC_COMPANY_EMAIL:-gbsess@gmail.com}
+        NEXT_PUBLIC_COMPANY_ADDRESS: ${NEXT_PUBLIC_COMPANY_ADDRESS:-Dindugal, Tamil Nadu, India}
+        NEXT_PUBLIC_COMPANY_HOURS: ${NEXT_PUBLIC_COMPANY_HOURS:-8am to 8pm, Mon-Sat}
+    env_file:
+      - .env.local
+    environment:
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+    ports:
+      - "${PORT:-3000}:3000"
+    restart: unless-stopped

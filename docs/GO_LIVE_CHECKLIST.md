@@ -18,7 +18,6 @@
 
 - [ ] Create a Node-compatible Next.js hosting project; static export cannot run the admin or API routes.
 - [ ] Set `ADMIN_PASSWORD` to a unique value and set all public business values and `NEXT_PUBLIC_SITE_URL` in host environment variables.
-- [ ] Create a Cloudflare Turnstile widget for the production domain. Set its site key and secret key in host secrets.
 - [ ] Connect the GBS-owned domain, choose the canonical host, enable HTTPS, and redirect HTTP to HTTPS.
 - [ ] Deploy using `npm run build` and `npm start`.
 
@@ -26,7 +25,7 @@
 
 - [ ] `/api/health` returns `ok`.
 - [ ] Submit a valid test enquiry and verify it appears in `/admin/enquiries` and in the database.
-- [ ] Confirm invalid fields, missing consent, honeypot, Turnstile, and repeat submissions behave as expected.
+- [ ] Confirm invalid fields, missing consent, honeypot, and repeat submissions behave as expected.
 - [ ] Sign in to `/admin/projects`; add, edit, reorder, and delete a test project; confirm the public page reflects changes.
 - [ ] Verify response security headers, HTTPS redirect, sitemap, robots, metadata, and structured data on the live domain.
 - [ ] Review mobile, tablet, desktop, keyboard-only navigation, and reduced-motion behavior.

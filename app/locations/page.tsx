@@ -46,7 +46,7 @@ export default function Locations() {
               </h2>
               <p>
                 Samples, drawings and finish options are easier to judge in
-                person. Call ahead so we can set aside time.
+                person. Email ahead so we can set aside time.
               </p>
             </div>
           </div>
@@ -69,7 +69,6 @@ export default function Locations() {
               <h3>Hours and contact</h3>
               <p>{company.hours}</p>
               <p style={{ marginTop: 10 }}>
-                <a href={company.phoneHref}>{company.phone}</a>
                 <br />
                 <a href={`mailto:${company.email}`}>{company.email}</a>
               </p>

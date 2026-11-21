@@ -6,7 +6,7 @@ import { EnquiryForm } from "./enquiry-form";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Book a consultation with GBS Interiors in Dindigul, Tamil Nadu. Call, WhatsApp or send an enquiry about a home or workplace project.",
+    "Send an enquiry to GBS Interiors in Dindigul, Tamil Nadu about a home or workplace project.",
   alternates: { canonical: "/contact" },
 };
 
@@ -36,22 +36,7 @@ export default async function Contact({
             <em>with a conversation.</em>
           </>
         }
-        intro="Tell us about the space, the city and the decision you are trying to make. We will reply with a sensible next step — usually a short call or a studio visit."
-        actions={
-          <>
-            <a className="btn" href={company.phoneHref}>
-              Call {company.phone}
-            </a>
-            <a
-              className="btn btn-ghost"
-              href={company.whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-            >
-              WhatsApp
-            </a>
-          </>
-        }
+        intro="Tell us about the space, the city and the decision you are trying to make. We will reply with a sensible next step."
       />
 
       <section className="section">
@@ -67,15 +52,7 @@ export default async function Contact({
             <aside className="contact-aside">
               <div className="contact-card">
                 <span className="kicker">Direct</span>
-                <h2 style={{ marginTop: 12 }}>Talk to the studio</h2>
-                <a href={company.phoneHref}>{company.phone}</a>
-                <a
-                  href={company.whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  WhatsApp · {company.phone}
-                </a>
+                <h2 style={{ marginTop: 12 }}>Write to the studio</h2>
                 <a href={`mailto:${company.email}`}>{company.email}</a>
                 <span className="contact-small">{company.hours}</span>
                 <span className="contact-small">{company.responseTime}</span>
@@ -104,7 +81,7 @@ export default async function Contact({
                 </span>
                 <ol style={{ marginTop: 14, paddingLeft: 18, display: "grid", gap: 8, fontSize: 15 }}>
                   <li>We read the enquiry and check the fit.</li>
-                  <li>We reply to arrange a short call or site visit.</li>
+                  <li>We reply by email to discuss next steps or arrange a site visit.</li>
                   <li>If it feels right, we scope the work in writing.</li>
                 </ol>
               </div>

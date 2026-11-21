@@ -186,7 +186,6 @@ function SiteHeader() {
         </nav>
         <div className="mobile-contact">
           <span>{company.availability}</span>
-          <a href={company.phoneHref}>{company.phone}</a>
           <a href={`mailto:${company.email}`}>{company.email}</a>
           <p>{company.address}</p>
           <p>{company.hours}</p>
@@ -261,7 +260,6 @@ function SiteFooter() {
 
           <div className="footer-col footer-contact">
             <h3>Contact</h3>
-            <a href={company.phoneHref}>{company.phone}</a>
             <a href={`mailto:${company.email}`}>{company.email}</a>
             <span>{company.address}</span>
             <span>{company.hours}</span>
@@ -287,27 +285,6 @@ function SiteFooter() {
   );
 }
 
-function MobileActionBar() {
-  return (
-    <div className="mobile-action-bar" aria-label="Quick contact">
-      <a href={company.phoneHref} aria-label={`Call ${company.phone}`}>
-        Call
-      </a>
-      <a
-        href={company.whatsappHref}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Message on WhatsApp"
-      >
-        WhatsApp
-      </a>
-      <Link href="/contact" aria-label="Book a consultation">
-        Book
-      </Link>
-    </div>
-  );
-}
-
 export function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith("/admin");
@@ -319,7 +296,6 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       <SiteHeader />
       <div id="main">{children}</div>
       <SiteFooter />
-      <MobileActionBar />
     </>
   );
 }

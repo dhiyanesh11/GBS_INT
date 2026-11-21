@@ -1,16 +1,8 @@
 "use client";
 
-import Script from "next/script";
 import Link from "next/link";
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { services } from "@/lib/site";
-
-declare global {
-  interface Window {
-    gbsTurnstileValue?: string;
-    gbsTurnstileToken?: (token: string) => void;
-  }
-}
 
 export function EnquiryForm({
   source = "contact",
@@ -28,17 +20,6 @@ export function EnquiryForm({
   const [message, setMessage] = useState("");
   const [tone, setTone] = useState<"success" | "error" | "">("");
   const [busy, setBusy] = useState(false);
-  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-
-  useEffect(() => {
-    window.gbsTurnstileToken = (token) => {
-      window.gbsTurnstileValue = token;
-    };
-    return () => {
-      delete window.gbsTurnstileToken;
-    };
-  }, []);
-
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formElement = event.currentTarget;
@@ -49,7 +30,6 @@ export function EnquiryForm({
     const body: Record<string, unknown> = Object.fromEntries(form.entries());
     body.consent = form.has("consent");
     body.source = source;
-    body.turnstileToken = window.gbsTurnstileValue || "";
 
     try {
       const response = await fetch("/api/enquiry", {
@@ -68,7 +48,6 @@ export function EnquiryForm({
         );
       }
       formElement.reset();
-      window.gbsTurnstileValue = "";
       setTone("success");
       setMessage(
         "Thank you. Your enquiry is with us — we usually reply within two working days."
@@ -190,23 +169,15 @@ export function EnquiryForm({
           </span>
         </label>
 
-        {siteKey && (
-          <div
-            className="cf-turnstile"
-            data-sitekey={siteKey}
-            data-callback="gbsTurnstileToken"
-          />
-        )}
-
         <div className="form-submit">
           <button className="btn" type="submit" disabled={busy}>
             {busy ? "Sending…" : "Send enquiry"}{" "}
             <span aria-hidden="true">↗</span>
           </button>
           <span className="form-note">
-            Prefer to talk?{" "}
+            Prefer email?{" "}
             <Link href="/contact" style={{ textDecoration: "underline" }}>
-              Use the phone or WhatsApp links
+              Contact the studio
             </Link>
             .
           </span>
@@ -223,13 +194,6 @@ export function EnquiryForm({
           </p>
         )}
       </form>
-      {siteKey && (
-        <Script
-          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-          async
-          defer
-        />
-      )}
     </>
   );
 }

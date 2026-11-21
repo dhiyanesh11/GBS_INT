@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { company } from "@/lib/site";
 
 export function CtaBand({
   kicker = "Start a project",
@@ -40,9 +39,6 @@ export function CtaBand({
                 {secondary.label}
               </Link>
             )}
-            <a className="btn btn-ghost" href={company.phoneHref}>
-              Call {company.phone}
-            </a>
           </div>
         </div>
       </div>

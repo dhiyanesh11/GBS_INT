@@ -56,7 +56,7 @@ export default function FAQPage() {
             <Link href="/contact" style={{ textDecoration: "underline" }}>
               Send the question
             </Link>{" "}
-            or call the studio. We answer enquiries in the order they arrive.
+            or send an enquiry. We answer in the order they arrive.
           </div>
         </div>
       </section>

@@ -3,6 +3,8 @@ import { getProjects } from "@/lib/projects";
 import { getBlogPosts } from "@/lib/blog";
 import { services } from "@/lib/site";
 
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
   const fixed = [

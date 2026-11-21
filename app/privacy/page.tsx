@@ -38,8 +38,7 @@ export default function Privacy() {
             <p>
               The site also processes basic technical information needed to
               protect forms from abuse, such as a rate-limit key derived from
-              your connection. If anti-bot verification is enabled, a token is
-              processed by Cloudflare Turnstile.
+              your connection to limit repeated form submissions.
             </p>
 
             <h2>How we use it</h2>
@@ -73,8 +72,8 @@ export default function Privacy() {
             <h2>Cookies</h2>
             <p>
               This site does not set advertising cookies. Third-party services
-              such as Turnstile or an embedded scheduling link may set their own
-              cookies when you choose to use them.
+              such as an embedded scheduling link may set its own cookies when
+              you choose to use it.
             </p>
           </div>
         </div>

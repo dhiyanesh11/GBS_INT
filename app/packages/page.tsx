@@ -211,7 +211,7 @@ export default function Packages() {
         kicker="Still deciding?"
         title={
           <>
-            A short call usually
+            A clear brief usually
             <br />
             <em>makes it clear.</em>
           </>

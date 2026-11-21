@@ -6,7 +6,7 @@ import { PageHero } from "@/components/page-hero";
 import { WorkCard } from "@/components/work-card";
 import { CtaBand } from "@/components/cta-band";
 
-export const revalidate = 600;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Work",

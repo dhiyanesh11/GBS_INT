@@ -18,7 +18,7 @@ import { WorkCard } from "@/components/work-card";
 import { FaqList } from "@/components/faq-list";
 import { CtaBand } from "@/components/cta-band";
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const [projects, posts] = await Promise.all([
@@ -303,20 +303,20 @@ export default async function Home() {
                 <ul>
                   <li>A recommended package for your scope</li>
                   <li>A clear list of the next decisions</li>
-                  <li>An optional call with the studio</li>
+                  <li>A chance to share more details by email</li>
                 </ul>
               </div>
               <div className="aside-card" style={{ background: "var(--graphite)", color: "var(--limewash)" }}>
-                <h3 style={{ color: "var(--limewash)" }}>Prefer a person?</h3>
+                <h3 style={{ color: "var(--limewash)" }}>Have a question?</h3>
                 <p style={{ color: "rgba(247,246,242,.72)" }}>
-                  Call the studio on {company.phone}, {company.hours}.
+                  Email the studio and we will get back to you.
                 </p>
                 <a
                   className="text-link"
-                  href={company.phoneHref}
+                  href={`mailto:${company.email}`}
                   style={{ marginTop: 14, borderColor: "rgba(247,246,242,.4)" }}
                 >
-                  Call now
+                  Email us
                 </a>
               </div>
             </div>

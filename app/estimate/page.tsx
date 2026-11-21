@@ -51,8 +51,8 @@ export default function EstimatePage() {
                     next.
                   </li>
                   <li>
-                    If you send the brief, we reply with a time for a short call
-                    or a site visit.
+                    If you send the brief, we reply by email to discuss next
+                    steps or arrange a site visit.
                   </li>
                 </ul>
               </div>
@@ -67,13 +67,13 @@ export default function EstimatePage() {
                 </ul>
               </div>
               <div className="aside-card">
-                <h3>Prefer to talk?</h3>
+                <h3>Have a question?</h3>
                 <p>
-                  Call the studio on {company.phone}, {company.hours}.
+                  Email the studio and we will get back to you.
                 </p>
                 <div className="split-actions" style={{ marginTop: 14 }}>
-                  <a className="text-link" href={company.phoneHref}>
-                    Call now
+                  <a className="text-link" href={`mailto:${company.email}`}>
+                    Email us
                   </a>
                   <Link className="text-link" href="/contact">
                     Contact page
